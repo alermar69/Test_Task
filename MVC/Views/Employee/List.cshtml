@@ -1,0 +1,32 @@
+﻿@using ModelEmployees.Entities
+@using MVC.Models
+
+@model IEnumerable<Employee>
+
+@{
+    ViewBag.Title = "Сотрудники компании";
+}
+
+<div class="row panel">
+    <div class="col-xs-3">
+        <div class="navbar">
+            @Html.ActionLink("Все", "List", "Employee", new { @class = "btn btn-block btn-default " + (ViewBag.Action == "List" ? "btn-primary" : "") })
+            @Html.ActionLink("Активные", "ListActiv", "Employee", new { @class = "btn btn-block btn-default " + (ViewBag.Action == "ListActiv" ? "btn-primary" : "") })
+            @Html.ActionLink("Неактивные", "ListNoActiv", "Employee", new { @class = "btn btn-block btn-default " + (ViewBag.Action == "ListNoActiv" ? "btn-primary" : "") })
+        </div>
+    </div>
+    <div class="col-xs-8">
+        @foreach (Employee employee in Model)
+        {
+            @Html.Partial("Employee", employee)
+        }
+
+        <div class="btn-group pull-right">
+            @Html.PageLinks((PageInfo)ViewBag.PageInfo, x => Url.Action(ViewBag.Action, new { page = x }))
+        </div>
+    </div>
+</div>
+
+
+
+

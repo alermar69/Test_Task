@@ -1,0 +1,41 @@
+﻿@model ModelEmployees.Entities.Employee
+
+@{
+    ViewBag.Title = "Редактирование";
+}
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h2>Редактирование @Model.Name</h2>
+    </div>
+
+    @using (Html.BeginForm("Edit", "Admin"))
+    {
+        <div class="panel-body">
+            @Html.Hidden("EmployeeID", Model.EmployeeID)
+
+            <label>Имя</label>
+            @Html.TextBox("Name", Model.Name, new { @class = "form-control" })
+            <br />
+
+            <label>Должность</label>
+            @Html.TextBox("Capacity", Model.Capacity, new { @class = "form-control" })
+            <br />
+
+            <label>Зарплата</label>
+            @Html.TextBox("Salary", Model.Salary, new { @class = "form-control" })
+            <br />
+
+            <div class="checkbox">
+                <label>@Html.CheckBox("Status", Model.Status) Статус (Активен\Неактивен)</label>
+            </div>
+
+        </div>
+
+        <div class="panel-footer">
+            <input type="submit" value="Сохранить" class="btn btn-primary" />
+        </div>
+    }
+</div>
+

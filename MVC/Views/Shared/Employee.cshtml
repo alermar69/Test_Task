@@ -1,0 +1,16 @@
+﻿@model ModelEmployees.Entities.Employee
+
+<div class="well well-small">
+    <h3>@Model.Name</h3>
+    <h4>@Model.Capacity</h4>
+    <h4>@Model.Salary.ToString("c")</h4>
+    @if (Model.Status)
+    {
+        <p>Активен</p>;
+    }
+    else
+    {
+        <p>Неактивен</p>;
+    }
+</div>
+
